@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		523B1491229E636400F5A725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B1490229E636400F5A725 /* AppDelegate.swift */; };
-		523B1493229E636400F5A725 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B1492229E636400F5A725 /* ViewController.swift */; };
-		523B1496229E636400F5A725 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523B1494229E636400F5A725 /* Main.storyboard */; };
 		523B1498229E636500F5A725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 523B1497229E636500F5A725 /* Assets.xcassets */; };
-		523B149B229E636500F5A725 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523B1499229E636500F5A725 /* LaunchScreen.storyboard */; };
 		523B14A6229E636500F5A725 /* F2FTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14A5229E636500F5A725 /* F2FTests.swift */; };
+		523B14B6229E66E500F5A725 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14B5229E66E500F5A725 /* Coordinator.swift */; };
+		523B14B8229E674500F5A725 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14B7229E674500F5A725 /* AppCoordinator.swift */; };
+		523B14BB229E6E8800F5A725 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14BA229E6E8800F5A725 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +28,14 @@
 /* Begin PBXFileReference section */
 		523B148D229E636400F5A725 /* F2F.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F2F.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		523B1490229E636400F5A725 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		523B1492229E636400F5A725 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		523B1495229E636400F5A725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		523B1497229E636500F5A725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		523B149A229E636500F5A725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		523B149C229E636500F5A725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		523B14A1229E636500F5A725 /* F2FTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = F2FTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		523B14A5229E636500F5A725 /* F2FTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2FTests.swift; sourceTree = "<group>"; };
 		523B14A7229E636500F5A725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		523B14B5229E66E500F5A725 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		523B14B7229E674500F5A725 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		523B14BA229E6E8800F5A725 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +77,12 @@
 		523B148F229E636400F5A725 /* F2F */ = {
 			isa = PBXGroup;
 			children = (
-				523B1490229E636400F5A725 /* AppDelegate.swift */,
-				523B1492229E636400F5A725 /* ViewController.swift */,
-				523B1494229E636400F5A725 /* Main.storyboard */,
-				523B1497229E636500F5A725 /* Assets.xcassets */,
-				523B1499229E636500F5A725 /* LaunchScreen.storyboard */,
-				523B149C229E636500F5A725 /* Info.plist */,
+				523B14B9229E6E6200F5A725 /* Extensions */,
+				523B14B3229E663900F5A725 /* Coordinator */,
+				523B14B2229E663300F5A725 /* ViewModel */,
+				523B14B1229E662A00F5A725 /* View */,
+				523B14B0229E662300F5A725 /* Model */,
+				523B14B4229E66C900F5A725 /* Support Files */,
 			);
 			path = F2F;
 			sourceTree = "<group>";
@@ -94,6 +94,54 @@
 				523B14A7229E636500F5A725 /* Info.plist */,
 			);
 			path = F2FTests;
+			sourceTree = "<group>";
+		};
+		523B14B0229E662300F5A725 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		523B14B1229E662A00F5A725 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		523B14B2229E663300F5A725 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		523B14B3229E663900F5A725 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				523B14B5229E66E500F5A725 /* Coordinator.swift */,
+				523B14B7229E674500F5A725 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		523B14B4229E66C900F5A725 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				523B1490229E636400F5A725 /* AppDelegate.swift */,
+				523B1497229E636500F5A725 /* Assets.xcassets */,
+				523B149C229E636500F5A725 /* Info.plist */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		523B14B9229E6E6200F5A725 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				523B14BA229E6E8800F5A725 /* ViewControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,9 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				523B149B229E636500F5A725 /* LaunchScreen.storyboard in Resources */,
 				523B1498229E636500F5A725 /* Assets.xcassets in Resources */,
-				523B1496229E636400F5A725 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +243,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				523B1493229E636400F5A725 /* ViewController.swift in Sources */,
+				523B14BB229E6E8800F5A725 /* ViewControllerExtension.swift in Sources */,
+				523B14B8229E674500F5A725 /* AppCoordinator.swift in Sources */,
 				523B1491229E636400F5A725 /* AppDelegate.swift in Sources */,
+				523B14B6229E66E500F5A725 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,25 +267,6 @@
 			targetProxy = 523B14A2229E636500F5A725 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		523B1494229E636400F5A725 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				523B1495229E636400F5A725 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		523B1499229E636500F5A725 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				523B149A229E636500F5A725 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		523B14A8229E636500F5A725 /* Debug */ = {
@@ -362,7 +391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M7WGV6L4K2;
-				INFOPLIST_FILE = F2F/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/F2F/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,7 +409,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M7WGV6L4K2;
-				INFOPLIST_FILE = F2F/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/F2F/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
