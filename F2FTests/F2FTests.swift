@@ -11,24 +11,40 @@ import XCTest
 
 class F2FTests: XCTestCase {
 
+    var service: RecipesService?
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        service = RecipesService()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        service = nil
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testRecipesInitialization() {
+        // Grants that the setup conforms the current service initialization
+        XCTAssertNotNil(service)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testRecipesBases() {
+        // Avoid changes on apiKey and URL and test its constants
+        XCTAssertEqual(service?.apiKey, "6069da7b8a6af285c726f3add56ea305")
+        XCTAssertEqual(service?.baseURL, "https://www.food2fork.com/api/search?key=6069da7b8a6af285c726f3add56ea305")
     }
-
+    
+    func testRecipeFetch() {
+        // Test fetch
+        let expectation = XCTestExpectation(description: "Wait for data being fetch")
+        var apiResponse: Any?
+        var apiError: Any?
+        service?.fetchRecipes(callback: { (response, error) in
+            expectation.fulfill()
+            apiError = error
+            apiResponse = response
+        })
+        wait(for: [expectation], timeout: 3.0) //wait 3 seconds for timeout
+        XCTAssertNotNil(apiResponse)
+        XCTAssertNil(apiError)
+        XCTAssertTrue(apiResponse is [Recipe])
+    }
 }

@@ -11,8 +11,8 @@
 import Foundation
 
 class RecipesService {
-    private let apiKey = "6069da7b8a6af285c726f3add56ea305"
-    private let baseURL: String
+    let apiKey = "6069da7b8a6af285c726f3add56ea305"
+    let baseURL: String
     private let session: URLSession
     private let jsonDecoder: JSONDecoder
     
