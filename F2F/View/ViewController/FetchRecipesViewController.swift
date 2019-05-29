@@ -38,8 +38,8 @@ class FetchRecipesViewController: UIViewController {
         }
     }
     
-    func showError() {
-        let alertController = UIAlertController(title: "Ops...", message: "Something got wrong while fetching data. Try again later.", preferredStyle: .alert)
+    func showErrorMessage(_ message: String?) {
+        let alertController = UIAlertController(title: "Ops...", message: message ?? "Something got wrong while fetching data. Try again later.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         navigationController?.present(alertController, animated: true, completion: nil)

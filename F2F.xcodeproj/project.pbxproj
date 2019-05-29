@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		523B1491229E636400F5A725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B1490229E636400F5A725 /* AppDelegate.swift */; };
-		523B1498229E636500F5A725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 523B1497229E636500F5A725 /* Assets.xcassets */; };
 		523B14A6229E636500F5A725 /* F2FTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14A5229E636500F5A725 /* F2FTests.swift */; };
 		523B14B6229E66E500F5A725 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14B5229E66E500F5A725 /* Coordinator.swift */; };
 		523B14B8229E674500F5A725 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14B7229E674500F5A725 /* AppCoordinator.swift */; };
@@ -19,6 +18,9 @@
 		523B14C3229E74BB00F5A725 /* RecipesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14C2229E74BB00F5A725 /* RecipesListViewController.swift */; };
 		523B14CB229E839A00F5A725 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14CA229E839A00F5A725 /* Recipe.swift */; };
 		523B14CD229E85A800F5A725 /* RecipesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14CC229E85A800F5A725 /* RecipesResponse.swift */; };
+		523B14DA229EA6A100F5A725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 523B14D9229EA6A100F5A725 /* Assets.xcassets */; };
+		523B14DE229EA76200F5A725 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14DD229EA76200F5A725 /* RecipeTableViewCell.swift */; };
+		523B14E0229EABF500F5A725 /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B14DF229EABF500F5A725 /* RecipesService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +36,6 @@
 /* Begin PBXFileReference section */
 		523B148D229E636400F5A725 /* F2F.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F2F.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		523B1490229E636400F5A725 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		523B1497229E636500F5A725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		523B149C229E636500F5A725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		523B14A1229E636500F5A725 /* F2FTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = F2FTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		523B14A5229E636500F5A725 /* F2FTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F2FTests.swift; sourceTree = "<group>"; };
@@ -48,6 +49,9 @@
 		523B14C2229E74BB00F5A725 /* RecipesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListViewController.swift; sourceTree = "<group>"; };
 		523B14CA229E839A00F5A725 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		523B14CC229E85A800F5A725 /* RecipesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesResponse.swift; sourceTree = "<group>"; };
+		523B14D9229EA6A100F5A725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		523B14DD229EA76200F5A725 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		523B14DF229EABF500F5A725 /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +151,8 @@
 		523B14B4229E66C900F5A725 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				523B14D9229EA6A100F5A725 /* Assets.xcassets */,
 				523B1490229E636400F5A725 /* AppDelegate.swift */,
-				523B1497229E636500F5A725 /* Assets.xcassets */,
 				523B149C229E636500F5A725 /* Info.plist */,
 			);
 			path = "Support Files";
@@ -165,6 +169,7 @@
 		523B14D6229E8BEE00F5A725 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				523B14DF229EABF500F5A725 /* RecipesService.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,10 +177,19 @@
 		523B14D7229E8BFC00F5A725 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				523B14D8229EA2F800F5A725 /* Cell */,
 				523B14B2229E663300F5A725 /* ViewController */,
 				523B14B1229E662A00F5A725 /* Storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		523B14D8229EA2F800F5A725 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				523B14DD229EA76200F5A725 /* RecipeTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +273,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523B14DA229EA6A100F5A725 /* Assets.xcassets in Resources */,
 				523B14BD229E70BB00F5A725 /* Recipes.storyboard in Resources */,
-				523B1498229E636500F5A725 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +293,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				523B14BB229E6E8800F5A725 /* ViewControllerExtension.swift in Sources */,
+				523B14DE229EA76200F5A725 /* RecipeTableViewCell.swift in Sources */,
 				523B14BF229E711500F5A725 /* FetchRecipesViewController.swift in Sources */,
 				523B14CD229E85A800F5A725 /* RecipesResponse.swift in Sources */,
 				523B14C1229E71BD00F5A725 /* FoodListCoordinator.swift in Sources */,
 				523B14C3229E74BB00F5A725 /* RecipesListViewController.swift in Sources */,
+				523B14E0229EABF500F5A725 /* RecipesService.swift in Sources */,
 				523B14B8229E674500F5A725 /* AppCoordinator.swift in Sources */,
 				523B1491229E636400F5A725 /* AppDelegate.swift in Sources */,
 				523B14B6229E66E500F5A725 /* Coordinator.swift in Sources */,

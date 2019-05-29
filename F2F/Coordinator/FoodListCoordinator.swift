@@ -25,10 +25,9 @@ class FoodListCoordinator: Coordinator {
     
     // MARK: - VIEWCONTROLLERS CALLERS
     func showFetchRecipesViewController() {
-        // Show initial fetch recipe viewController without navbar and push animation.
+        // Show initial fetch recipe viewController without push animation.
         let viewController = FetchRecipesViewController.initFromStoryboard(named: storyboardName)
         viewController.delegate = self
-        navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(viewController, animated: false)
     }
     
@@ -44,12 +43,24 @@ class FoodListCoordinator: Coordinator {
 // MARK: - VIEWCONTROLLER DELEGATES
 extension FoodListCoordinator: FetchRecipesViewControllerDelegate {
     func didTapFetchRecipes(in viewController: FetchRecipesViewController) {
-        let recipeList = [Recipe]()
-        viewController.isLoading(true)
+        // Should call RecipesServices and return the contents of fetch recipes list to a recipeList.
+        let service = RecipesService()
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
-            viewController.isLoading(false)
-            viewController.showError()
+        // Show loading animation
+        viewController.isLoading(true)
+        // Call service fetch
+        service.fetchRecipes { (recipesList, error) in
+            if let recipes = recipesList {
+                DispatchQueue.main.async {
+                    viewController.isLoading(false)
+                    self.showRecipesListViewController(recipes)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    viewController.isLoading(false)
+                    viewController.showErrorMessage(error?.localizedDescription)
+                }
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ struct Recipe: Codable {
     var f2fUrl: String
     var title: String
     var sourceUrl: String
-    var id: Int
+    var id: String
     var imageUrl: String
     var socialRank: Int
     var publisherUrl: String
