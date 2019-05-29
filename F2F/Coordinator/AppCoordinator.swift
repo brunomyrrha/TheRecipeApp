@@ -25,6 +25,8 @@ class AppCoordinator: Coordinator {
     // MARK: - INITIALIZATION
     func start() {
         configureWindow()
+        configureNavigationControllerStyle()
+        startFoodListCoordinator()
     }
     
     private func configureWindow() {
@@ -41,5 +43,8 @@ class AppCoordinator: Coordinator {
     }
     
     // MARK: - CHILD COORDINATORS CALLERS
-    
+    func startFoodListCoordinator() {
+        let coordinator = FoodListCoordinator(navigationController: navigationController)
+        coordinator.start()
+    }
 }

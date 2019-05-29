@@ -6,14 +6,14 @@
 //  Copyright © 2019 Bruno Diniz. All rights reserved.
 //
 
-/*ViewController helpers and extensions*/
+/* ViewController helpers and extensions. */
 
 import UIKit
 
 extension UIViewController {
     
     private class func initFromStoryboardHelper<T>(storyboard: String) -> T {
-        //Generic self calling method to help initialization from storyboard name. As this class uses the viewController self name, the storyboard and the swift file should have the same name.
+        //Generic self calling method to help initialization from storyboard name. As this class uses the viewController self name, the viewController's storyboard ID and the swift file should have the same name or it will throw an error.
         let filename = String(describing: self)
         let storyboard = UIStoryboard(name: storyboard, bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: filename) as! T
