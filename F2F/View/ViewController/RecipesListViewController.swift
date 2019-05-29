@@ -16,16 +16,19 @@ class RecipesListViewController: UIViewController {
     var recipesList = [Recipe]()
     
     override func viewDidLoad() {
-        // On viewLoad, checks if the recipe list is empty and sets the table view visibility
-        configureTableView()
+        // On viewLoad, checks if the recipe list is empty and sets the table view visibility and adds the navitem
         addSortNavBarButton()
+        configureTableView()
         super.viewDidLoad()
     }
     
     private func configureTableView() {
+        // Settings for tableview work correctly.
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isHidden = recipesList.isEmpty
+        navigationItem.rightBarButtonItem?.isEnabled = !tableView.isHidden //Verify if the table view was loaded to enable the sort button
+        
     }
     
     private func addSortNavBarButton() {
@@ -45,23 +48,16 @@ class RecipesListViewController: UIViewController {
         }
         alertController.addAction(cancelAction)
         alertController.addAction(sortAction)
+
         navigationController?.present(alertController, animated: true, completion: nil)
     }
     
     private func sortList() {
         // Sort current list and reload tableview after
-        let animationDuration = 0.5
-        UIView.animate(withDuration: animationDuration) {
-            self.tableView.isHidden = true
-        }
-        
         recipesList = recipesList.sorted {
             $0.title < $1.title
         }
         tableView.reloadData()
-        UIView.animate(withDuration: animationDuration) {
-            self.tableView.isHidden = false
-        }
     }
 }
 
