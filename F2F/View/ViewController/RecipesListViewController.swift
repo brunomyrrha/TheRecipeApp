@@ -13,18 +13,55 @@ class RecipesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //The list is initialized to avoid nil recipe errors.
-    var recipeList = [Recipe]()
+    var recipesList = [Recipe]()
     
     override func viewDidLoad() {
         // On viewLoad, checks if the recipe list is empty and sets the table view visibility
         configureTableView()
+        addSortNavBarButton()
         super.viewDidLoad()
     }
     
     private func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.isHidden = recipeList.isEmpty
+        tableView.isHidden = recipesList.isEmpty
+    }
+    
+    private func addSortNavBarButton() {
+        // Adds the sort button to the navbar
+        let sortBarItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(showSortAlert))
+        navigationItem.setRightBarButton(sortBarItem, animated: false)
+    }
+    
+    @objc private func showSortAlert() {
+        // Presents an alert with cancel and sort options to user
+        let alertController = UIAlertController(title: "Sort?", message: "Do you want to sort the recipe list in alphabetical order?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "No", style: .destructive) { (UIAlertAction) in
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        let sortAction = UIAlertAction(title: "Sort", style: .default) { (UIAlertAction) in
+            self.sortList()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(sortAction)
+        navigationController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func sortList() {
+        // Sort current list and reload tableview after
+        let animationDuration = 0.5
+        UIView.animate(withDuration: animationDuration) {
+            self.tableView.isHidden = true
+        }
+        
+        recipesList = recipesList.sorted {
+            $0.title < $1.title
+        }
+        tableView.reloadData()
+        UIView.animate(withDuration: animationDuration) {
+            self.tableView.isHidden = false
+        }
     }
 }
 
@@ -34,20 +71,20 @@ extension RecipesListViewController: UITableViewDelegate, UITableViewDataSource 
         // Try to load Image from URL and than sets to cell.
         var loadedImage: UIImage?
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell") as! RecipeTableViewCell
-        let url = NSURL(string: recipeList[indexPath.row].imageUrl)! as URL
-        if let image: NSData = NSData(contentsOf: url) {
-            loadedImage = UIImage(data: image as Data)
-        }  
+        let url = URL(string: recipesList[indexPath.row].imageUrl)!
+        if let data = try? Data(contentsOf: url) {
+            loadedImage = UIImage(data: data)
+        }
         if loadedImage != nil {
             cell.recipeImage.image = loadedImage
         }
-        cell.recipeNameLabel.text = recipeList[indexPath.row].title
+        cell.recipeNameLabel.text = recipesList[indexPath.row].title
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return number of cells that tableview should have. In this case, it uses the recipeList as counter.
-        return recipeList.count
+        // Return number of cells that tableview should have. In this case, it uses the recipesList as counter.
+        return recipesList.count
     }
     
     

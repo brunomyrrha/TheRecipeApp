@@ -31,10 +31,10 @@ class FoodListCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: false)
     }
     
-    func showRecipesListViewController(_ recipeList: [Recipe]) {
+    func showRecipesListViewController(_ recipesList: [Recipe]) {
         // Show recipe list with navbar and push animation. The list should be injected.
         let viewController = RecipesListViewController.initFromStoryboard(named: storyboardName)
-        viewController.recipeList = recipeList
+        viewController.recipesList = recipesList
         navigationController.navigationBar.isHidden = false
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -43,7 +43,7 @@ class FoodListCoordinator: Coordinator {
 // MARK: - VIEWCONTROLLER DELEGATES
 extension FoodListCoordinator: FetchRecipesViewControllerDelegate {
     func didTapFetchRecipes(in viewController: FetchRecipesViewController) {
-        // Should call RecipesServices and return the contents of fetch recipes list to a recipeList.
+        // Should call RecipesServices and return the contents of fetch recipes list to a recipesList.
         let service = RecipesService()
         
         // Show loading animation
