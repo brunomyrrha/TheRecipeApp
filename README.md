@@ -1,4 +1,4 @@
-# theRecipeApp
+# The Recipe App
 This repository holds my submission to Distilled SCH tech test.
 
 ## Git Flow
