@@ -67,8 +67,8 @@ extension RecipesListViewController: UITableViewDelegate, UITableViewDataSource 
         // Try to load Image from URL and than sets to cell.
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell") as! RecipeTableViewCell
         let url = URL(string: recipesList[indexPath.row].imageUrl)!
-        if let data = try? Data(contentsOf: url) {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            if let data = try? Data(contentsOf: url) {
                 cell.recipeImage.image = UIImage(data: data)
             }
         }
