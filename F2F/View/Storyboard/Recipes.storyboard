@@ -19,8 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-gF-Yd2">
-                                <rect key="frame" x="16" y="391" width="343" height="30"/>
-                                <state key="normal" title="CHECK RECIPES"/>
+                                <rect key="frame" x="16" y="380.66666666666669" width="343" height="51"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <state key="normal" title="Go"/>
                                 <connections>
                                     <action selector="didTapFetchRecipes:" destination="FoP-a4-CVk" eventType="touchUpInside" id="dgx-Hj-DN9"/>
                                 </connections>
