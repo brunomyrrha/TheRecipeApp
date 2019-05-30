@@ -33,14 +33,14 @@ class RecipesListViewController: UIViewController {
     
     private func addSortNavBarButton() {
         // Adds the sort button to the navbar
-        let sortBarItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(showSortAlert))
+        let sortBarItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(showSortActionSheet))
         navigationItem.setRightBarButton(sortBarItem, animated: false)
     }
     
-    @objc private func showSortAlert() {
+    @objc private func showSortActionSheet() {
         // Presents an alert with cancel and sort options to user
-        let alertController = UIAlertController(title: "Sort?", message: "Do you want to sort the recipe list in alphabetical order?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "No", style: .destructive) { (UIAlertAction) in
+        let alertController = UIAlertController(title: "Sort?", message: "Do you want to sort the recipe list in alphabetical order?", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel) { (UIAlertAction) in
             self.navigationController?.dismiss(animated: true, completion: nil)
         }
         let sortAction = UIAlertAction(title: "Sort", style: .default) { (UIAlertAction) in
